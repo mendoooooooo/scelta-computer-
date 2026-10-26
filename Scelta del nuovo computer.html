@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scelta del nuovo computer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1124;--tx:#f3f5fc;--mu:#9aa6c4;--c1:#5ad1f5;--c2:#b693ff;--c3:#46e0a0;--c4:#ffb85c;--gl:rgba(255,255,255,.06);--bd:rgba(255,255,255,.11);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;height:100%;background:var(--bg);color:var(--tx);font:400 16px/1.5 'DM Sans',system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{font-family:'Bricolage Grotesque','DM Sans',system-ui,sans-serif;margin:0;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+svg.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bg{position:fixed;inset:0;overflow:hidden;z-index:0}
+.bg i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;animation:fl 18s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:60vmax;height:60vmax;background:#2b6cff;left:-20vmax;top:-18vmax}
+.bg i:nth-child(2){width:50vmax;height:50vmax;background:#8a4dff;right:-18vmax;top:20vh;animation-delay:-6s}
+.bg i:nth-child(3){width:40vmax;height:40vmax;background:#12b886;left:20vw;bottom:-22vmax;opacity:.22;animation-delay:-11s}
+@keyframes fl{to{transform:translate(6vmax,5vmax) scale(1.15)}}
+#pg{position:fixed;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));transform-origin:left;transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:20}
+#st{position:relative;height:100%;z-index:1}
+.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;padding:34px 20px 120px;opacity:0;visibility:hidden;transform:translateX(calc(var(--d,1)*70px));transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1),visibility 0s .7s}
+.slide.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.slide.out{transform:translateX(calc(var(--d,1)*-70px))}
+.w{position:relative;z-index:1;margin:auto;width:100%;max-width:1060px;display:flex;flex-direction:column;gap:20px}
+.a{opacity:0}
+.on .a{animation:up .75s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms + 120ms)}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.gl{background:var(--gl);border:1px solid var(--bd);border-radius:22px;padding:18px 20px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+h2{font-size:clamp(26px,5.4vw,46px);font-weight:800}
+.vd{color:var(--mu);font-size:clamp(15px,2.4vw,19px);max-width:62ch}
+.bd{display:inline-flex;align-items:center;justify-content:center;line-height:1;gap:8px;padding:7px 14px;border-radius:99px;background:var(--gl);border:1px solid var(--bd);font-size:14px;color:var(--mu);width:fit-content}
+.bd.g{background:rgba(70,224,160,.14);border-color:rgba(70,224,160,.5);color:var(--c3);font-weight:700}
+.hd{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+/* cover */
+.cv h1{font-size:clamp(40px,10.5vw,104px);font-weight:800;background:linear-gradient(100deg,#fff 20%,var(--c1) 55%,var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;overflow-wrap:anywhere}
+.on .cv h1,.on.cv h1{animation:trk 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes trk{from{letter-spacing:.12em;opacity:0;filter:blur(8px)}to{letter-spacing:-.02em;opacity:1;filter:none}}
+.cv .sub{font-size:clamp(18px,3.4vw,28px);color:var(--c1);font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600}
+.cv .q{font-size:clamp(16px,2.6vw,21px);color:var(--mu);max-width:44ch}
+.orb{position:absolute;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--gl);border:1px solid var(--bd);backdrop-filter:blur(10px);animation:bob 6s ease-in-out infinite alternate;color:var(--c1)}
+.orb svg{width:46%;height:46%}
+@keyframes bob{to{transform:translateY(-18px) rotate(6deg)}}
+.hint{display:flex;align-items:center;gap:10px;color:var(--mu);font-size:15px}
+.hint b{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--gl);border:1px solid var(--bd);align-items:center;justify-content:center;color:var(--tx);animation:nud 1.6s ease-in-out infinite}
+@keyframes nud{50%{transform:translateX(6px)}}
+/* areas */
+.ar{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:14px}
+.ar .gl{display:flex;flex-direction:column;gap:10px}
+.ic{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--k) 18%,transparent);color:var(--k);font-size:24px}
+.ar h3{font-size:20px}.ar p{color:var(--mu);font-size:15px}
+/* model */
+.g{display:grid;grid-template-columns:1fr;gap:16px}
+.pr{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(52px,14vw,104px);line-height:1;letter-spacing:-.03em;background:linear-gradient(100deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rw{display:flex;gap:12px;align-items:flex-start;color:var(--mu);font-size:16px}
+.rw svg{margin-top:3px;color:var(--c1)}.rw b{color:var(--tx)}
+.us{border-radius:18px;padding:14px 16px;background:rgba(255,184,92,.1);border:1px solid rgba(255,184,92,.4);font-size:15px;color:#ffe3bd}
+.us b{color:var(--c4)}
+.sp{display:flex;flex-direction:column;padding:6px 20px}
+.sp div{display:flex;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--bd)}
+.sp div:last-child{border:0}
+.sp svg{color:var(--c1);font-size:20px}
+.sp span{width:104px;flex:none;color:var(--mu);font-size:14px}
+.sp b{font-weight:500;font-size:16px;min-width:0;overflow-wrap:anywhere}
+.pc{display:grid;grid-template-columns:1fr;gap:14px}
+.pc h3{font-size:18px;display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.pc ul,.ok ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.pc li{position:relative;padding-left:20px;font-size:15px}
+.pc li::before{content:"";position:absolute;left:2px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--k)}
+.pro{--k:var(--c3)}.pro h3{color:var(--c3)}.con{--k:var(--c4)}.con h3{color:var(--c4)}
+/* compare */
+.cm{padding:8px 18px}
+.cm .r{padding:12px 0;border-bottom:1px solid var(--bd);display:flex;flex-direction:column;gap:6px}
+.cm .r:last-child{border:0}
+.cm .r.h{display:none}
+.cm .r>b{color:var(--mu);font-weight:500;font-size:14px}
+.cm .r span{font-size:15px;display:flex;gap:8px}
+.cm .r span::before{content:attr(data-n);flex:none;width:92px;color:var(--m);font-weight:700;font-size:13px;padding-top:2px}
+.cm .y{color:var(--c3)}.cm .n{color:var(--c4)}
+.tg{display:grid;grid-template-columns:1fr;gap:12px}
+.tg .gl{padding:14px 18px}.tg small{color:var(--mu);font-size:14px;display:block}.tg h3{font-size:20px;color:var(--k)}
+/* rank */
+.pd{display:flex;align-items:flex-end;justify-content:center;gap:10px;height:230px}
+.pd div{width:min(30%,150px);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;text-align:center;font-size:13px;height:100%;position:relative}
+.pd .bar{width:100%;border-radius:16px 16px 6px 6px;background:linear-gradient(180deg,var(--k),color-mix(in srgb,var(--k) 35%,transparent));display:flex;justify-content:center;padding-top:8px;font:800 34px 'Bricolage Grotesque',sans-serif;color:#0e1124;transform-origin:bottom;transform:scaleY(0)}
+.on .pd .bar{animation:gr 1s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--i,0)*120ms + 500ms)}
+@keyframes gr{to{transform:none}}
+.pd b{font-size:14px;line-height:1.2}.pd em{font-style:normal;color:var(--c1);font-weight:700}
+.rk{display:flex;flex-direction:column;gap:10px}
+.rk .gl{display:flex;gap:14px;align-items:center;padding:12px 16px;border-radius:18px}
+.rk i{flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 16px 'Bricolage Grotesque',sans-serif;font-style:normal;background:rgba(255,255,255,.1)}
+.rk i.t{background:var(--c1);color:#0e1124}
+.rk b{display:block;font-size:15px;overflow-wrap:anywhere}.rk p{font-size:14px;color:var(--mu)}
+.nt{color:var(--mu);font-size:14px;font-style:italic}
+/* why / final */
+.wy{display:grid;grid-template-columns:1fr;gap:16px}
+.ck{display:flex;flex-direction:column;gap:12px}
+.ck div{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.ck svg{color:var(--c3);font-size:22px;margin-top:1px}
+.on .ck .pop svg{animation:pp .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i,0)*70ms + 450ms)}
+@keyframes pp{from{transform:scale(0) rotate(-40deg)}to{transform:none}}
+.big{text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;padding:26px 20px}
+.big .pr{font-size:clamp(54px,13vw,88px)}
+.qt{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:clamp(18px,3vw,26px);font-weight:600;line-height:1.3;max-width:34ch}
+.op{display:grid;grid-template-columns:1fr;gap:14px}
+.op .gl{display:flex;flex-direction:column;gap:8px}.op h3{font-size:22px;color:var(--k)}.op p{color:var(--mu);font-size:15px}
+.cl{display:grid;grid-template-columns:1fr;gap:12px}
+.pk{display:grid;grid-template-columns:1fr;gap:14px}.pk label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px}
+.pk select{font:500 16px 'DM Sans',system-ui,sans-serif;color:var(--tx);background:rgba(255,255,255,.08);border:1px solid var(--bd);border-radius:16px;padding:14px 16px;width:100%;min-height:52px}
+.pk select:focus-visible{outline:3px solid var(--c1);outline-offset:2px}.pk option{background:#1a1f3a;color:#fff}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;align-self:stretch;padding:15px 28px;border-radius:99px;border:0;font:700 17px 'DM Sans',system-ui,sans-serif;color:#0e1124;background:linear-gradient(135deg,var(--c1),var(--c2));cursor:pointer;box-shadow:0 8px 30px rgba(90,209,245,.3);transition:transform .2s}
+.bt:active{transform:scale(.96)}.bt:focus-visible{outline:3px solid var(--c1);outline-offset:3px}.bt.gh{background:var(--gl);color:var(--tx);border:1px solid var(--bd);box-shadow:none;align-self:center;margin-top:6px}
+.cx{display:flex;flex-direction:column;gap:14px;animation:up .6s cubic-bezier(.2,.8,.2,1) both}
+.hdr{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hdr>div{background:var(--gl);border:1px solid var(--bd);border-radius:18px;padding:14px;min-width:0}
+.hdr small{color:var(--k);font-weight:700}.hdr h3{font-size:clamp(15px,2.4vw,20px);margin:4px 0 6px;overflow-wrap:anywhere}.hdr .pr2{font:800 clamp(22px,5vw,34px) 'Bricolage Grotesque',system-ui,sans-serif;color:var(--k)}
+.cm.cc .r span::before{width:24px}.pcs{display:grid;grid-template-columns:1fr;gap:14px}.cmx{text-align:center;color:var(--c4)}.club{font-size:13px;line-height:1.45;color:var(--mu)}.club b{color:var(--c1);font-weight:700}
+/* nav */
+.nb{position:fixed;z-index:30;width:58px;height:58px;border-radius:50%;border:1px solid var(--bd);background:rgba(255,255,255,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--tx);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .25s,opacity .3s,background .25s;font-size:26px;bottom:calc(env(safe-area-inset-bottom,0px) + 18px)}
+#pv{left:16px}#nx{right:16px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#0e1124;border:0;box-shadow:0 8px 30px rgba(90,209,245,.35)}
+#nx::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--c1);animation:rg 2s ease-out infinite}
+@keyframes rg{from{transform:scale(1);opacity:.7}to{transform:scale(1.5);opacity:0}}
+.nb:active{transform:scale(.9)}
+.nb.h{opacity:0;pointer-events:none;transform:scale(.6)}
+.nb:focus-visible{outline:3px solid var(--c1);outline-offset:3px}
+#ct{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 34px);font-size:14px;color:var(--mu);background:var(--gl);border:1px solid var(--bd);padding:6px 14px;border-radius:99px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media(min-width:720px){
+ .slide{padding:44px 120px 60px}
+ .nb{bottom:auto;top:50%;margin-top:-29px}
+ .nb:active{transform:scale(.9)}
+ #pv{left:30px}#nx{right:30px}
+ #ct{bottom:22px}
+ .g{grid-template-columns:5fr 6fr;gap:26px;align-items:start}
+ .pc{grid-template-columns:1fr 1fr}
+ .tg,.op{grid-template-columns:repeat(3,1fr)}
+ .cl{grid-template-columns:1fr 1fr}
+ .wy{grid-template-columns:6fr 4fr;align-items:center}
+ .cm{padding:6px 22px}
+ .cm .r{display:grid;grid-template-columns:1.1fr 1.4fr 1.4fr 1.4fr;gap:14px;align-items:center;padding:9px 0}
+ .cm .r span::before{display:none}
+ .cm.cc .r{grid-template-columns:1fr 2fr 2fr}.pk{grid-template-columns:1fr 1fr}.bt{align-self:flex-start}.bt.gh{align-self:center}.pcs{grid-template-columns:1fr 1fr}
+ .cm .r.h{display:grid}
+ .cm .r.h span{font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--m)}
+ .rk{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+}
+@media(min-width:720px) and (max-height:760px){.slide{padding-top:28px}.w{gap:14px}.cm .r{padding:6px 0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}.a{opacity:1}.pd .bar{transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i><i></i></div>
+<div id="pg"></div>
+<main id="st" aria-live="polite"></main>
+<button class="nb h" id="pv" aria-label="Slide precedente"></button>
+<div id="ct"></div>
+<button class="nb" id="nx" aria-label="Slide successiva"></button>
+<script>
+const P={
+cpu:'<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
+ram:'<rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/>',
+ssd:'<path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/>',
+scr:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+bat:'<rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 13v-2"/>',
+wt:'<path d="M16.5 9.4L7.5 4.21M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>',
+oth:'<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>',
+bag:'<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+card:'<rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/>',
+ok:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>',
+warn:'<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/>',
+award:'<circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/>',
+code:'<path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>',
+fea:'<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8L2 22M17.5 15H9"/>',
+tag:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><path d="M7 7h.01"/>',
+info:'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+zap:'<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
+l:'<path d="M15 18l-6-6 6-6"/>',r:'<path d="M9 18l6-6-6-6"/>',chk:'<path d="M20 6L9 17l-5-5"/>',rot:'<path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>'};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const L=['Processore','RAM','Archiviazione','Schermo','Batteria','Peso','Altro'],LI=['cpu','ram','ssd','scr','bat','wt','oth'];
+const U='Possibile sconto portando un dispositivo usato. ';
+const M=[
+['HP 15-FD1009NLX',549.9,'Unieuro','Unica soluzione, senza rate (secondo le informazioni disponibili)',1,['Intel Core 5 120U, 10 core e 12 thread','16 GB DDR4','512 GB SSD NVMe','15,6 pollici Full HD','Circa 41 Wh','Circa 1,59 kg','Grafica Intel integrata, Windows 11 Home'],['Prezzo contenuto','Adatto a programmazione e studio','16 GB di RAM e SSD da 512 GB','Peso relativamente ridotto'],['Schermo meno ampio dei modelli da 16 pollici','Espandibilità della RAM limitata','Batteria da circa 41 Wh'],'Un’alternativa economica e valida per lo studio, ancora più interessante se fosse disponibile uno sconto per il dispositivo usato.'],
+['HP 15-FD1008NLX',799,'MediaWorld','10 rate da 79,90 € (condizioni comunicate)',0,['Intel Core 5 120U','16 GB','512 GB SSD','15,6 pollici Full HD','Non indicata','Non indicato','Grafica Intel integrata, Windows 11 Home'],['Adatto alle attività quotidiane e alla programmazione','SSD da 512 GB'],['Costa 249,10 € in più dell’HP 15-FD1009NLX','Nessun vantaggio visibile che giustifichi il sovrapprezzo'],'Il meno conveniente in rapporto al prezzo, sulla base delle caratteristiche disponibili.'],
+['ASUS Vivobook 15 F1504MA-BQ783W',699,'MediaWorld','10 rate da 69,90 €',0,['Intel Core 5 315','16 GB','512 GB SSD','15,6 pollici Full HD IPS','42 Wh','Circa 1,7 kg','Grafica Intel, tastierino numerico, Windows 11 Home'],['Schermo IPS antiriflesso','Adatto a studio e programmazione','Tastierino numerico'],['Costa 149,10 € in più dell’HP 15-FD1009NLX','Poche informazioni su RAM ed espandibilità','Meno convincente del Vivobook 16'],'Un computer valido, ma non il più conveniente tra le alternative considerate.'],
+['ASUS Vivobook S14 S3407QA-KP014W',749,'MediaWorld','10 rate da 74,90 €',0,['Snapdragon X X1-26-100, 8 core','16 GB (non indicata come espandibile)','1 TB SSD','14 pollici, 2560 × 1600','70 Wh','Circa 1,35 kg','Tastiera retroilluminata, Windows 11 su ARM'],['Molto leggero e portatile','Schermo ad alta risoluzione','SSD da 1 TB e batteria capiente'],['ARM (processore diverso dai PC classici): possibili problemi con alcuni programmi, driver e strumenti tecnici','RAM non indicata come espandibile','Costa più del Vivobook 16'],'Ottimo per mobilità, autonomia e schermo, ma da valutare attentamente per la compatibilità con i programmi di informatica.'],
+['ASUS Vivobook 16 M1605NAQ-MB229W',729,'MediaWorld','10 rate da 72,90 €',0,['AMD Ryzen 5 150, 6 core e 12 thread','16 GB DDR5, espandibile fino a 24 GB','512 GB NVMe PCIe 4.0','16 pollici, 1920 × 1200 (16:10)','42 Wh','Circa 1,88 kg','Tastiera retroilluminata, Windows 11 Home'],['Adatto a programmazione e multitasking','RAM espandibile','Schermo grande, utile per leggere codice','x86-64 (come i PC tradizionali): buona compatibilità'],['Più pesante di alcuni concorrenti','Batteria relativamente contenuta','Poco indicato per lavori professionali con i colori'],'Il miglior equilibrio per studiare informatica, programmare e continuare a usare il computer negli anni.','Principale candidato all’acquisto'],
+['HP 250 G10 9Y6X7AT',639.9,'MediaWorld','Unica soluzione (secondo le informazioni disponibili)',0,['Intel Core i5-1334U, 10 core e 12 thread','16 GB DDR4','512 GB SSD','15,6 pollici Full HD, 250 nit','41 Wh','Circa 1,52 kg','Tastierino numerico, Windows 11 Pro'],['Peso contenuto','Processore adatto a programmazione e uso quotidiano','Windows 11 Pro, utile in alcuni contesti professionali'],['Schermo da 250 nit: poco luminoso','Batteria modesta, tastiera non retroilluminata','Grafica e RAM espandibile: da verificare'],'Un portatile valido, ma senza vantaggi sufficienti per renderlo la scelta più conveniente.'],
+['HP 15-fc1009nlx',579.9,'Unieuro','Unica soluzione (secondo le informazioni disponibili)',1,['AMD Ryzen 5 7520U, 4 core e 8 thread','16 GB LPDDR5 saldata, non espandibile','512 GB SSD NVMe','15,6 pollici Full HD','Circa 41 Wh','Circa 1,59 kg','Grafica AMD Radeon 610M, Windows 11 Home'],['Prezzo contenuto','Peso ridotto','Adatto a scuola e programmazione di base'],['Processore meno adatto a carichi impegnativi','RAM non espandibile','Grafica integrata di fascia base'],'Una scelta economica, da valutare soprattutto se lo sconto per il dispositivo usato riduce sensibilmente il prezzo finale.'],
+['Samsung Galaxy Book4 Edge',699.9,'Unieuro','Unica soluzione (non è possibile pagarlo a rate)',1,['Snapdragon X X1-26-100, 8 core','16 GB LPDDR5x, saldata','512 GB eUFS (da verificare sulla scheda ufficiale)','15,6 pollici Full HD','61,2 Wh','Circa 1,5 kg','Wi-Fi 7, USB4, HDMI 2.1, NPU per l’IA, Windows 11 su ARM'],['Leggero e sottile','Batteria capiente','Connettività moderna','Ottimo per chi si sposta spesso'],['ARM: possibili problemi con alcuni programmi, driver e strumenti tecnici','RAM saldata','Archiviazione e aggiornabilità: da verificare'],'Molto interessante per autonomia e portabilità, ma occorre verificare la compatibilità con gli strumenti informatici che verranno utilizzati.'],
+['Lenovo IdeaPad Slim 3 83N30091IX',699,'MediaWorld','10 rate da 69,90 €',0,['Snapdragon X X1-26-100, 8 core, fino a 3 GHz','16 GB, massimo dichiarato 16 GB (non espandibile)','256 GB SSD','15,3 pollici WUXGA, 1920 × 1200, IPS antiriflesso, non touchscreen','50 Wh, autonomia dichiarata fino a 5 ore','Circa 1,55 kg','Grafica Adreno integrata, NPU Hexagon fino a 45 TOPS, Windows 11 Home per ARM','Wi-Fi 6, Bluetooth 5.3, 2 USB-A, USB-C con ricarica, HDMI, lettore di schede, jack audio','Tastiera italiana non retroilluminata, lettore d’impronte, webcam 5 MP, colore grigio, 34,3 × 1,69 × 23,9 cm, alimentatore non incluso (secondo la scheda)'],['Leggero e facile da trasportare','Snapdragon X con NPU dedicata','Schermo con risoluzione 1920 × 1200','Ricarica tramite USB-C','Lettore d’impronte digitali'],['SSD da soli 256 GB','RAM non espandibile secondo le specifiche dichiarate','ARM: possibili problemi con alcuni programmi tecnici','Tastiera non retroilluminata','Autonomia dichiarata di sole 5 ore, da verificare nell’uso reale','Alimentatore da acquistare separatamente'],'Portatile leggero e moderno, adatto allo studio e alle attività quotidiane. Per un uso informatico a lungo termine, però, l’ASUS Vivobook 16 da 729 € resta preferibile: SSD doppio, maggiore espandibilità e compatibilità più semplice con i software tradizionali.']];
+const eur=v=>v.toLocaleString('it-IT',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2})+' €';
+const S=[];
+S.push(`<div class="w cv"><span class="bd a">${ic('info')} Guida alla scelta per studiare informatica</span><h1 class="a">Scelta del nuovo computer</h1><p class="sub a">Confronto tra prestazioni, prezzo e convenienza</p><p class="q a">Quale computer conviene acquistare per studiare informatica e guardare al futuro?</p><p class="hint a"><b>${ic('r')}</b>Tocca la freccia o scorri per iniziare</p></div>
+<div class="orb" style="width:120px;height:120px;right:9%;top:12%">${ic('cpu')}</div><div class="orb" style="width:84px;height:84px;right:24%;top:48%;animation-delay:-2s;color:var(--c2)">${ic('ssd')}</div><div class="orb" style="width:100px;height:100px;right:6%;bottom:18%;animation-delay:-4s;color:var(--c3)">${ic('bat')}</div>`);
+const AR=[['cpu','Prestazioni','Processore (il “cervello”), RAM (la memoria di lavoro) e archiviazione SSD (l’archivio veloce).','--c1'],['code','Utilizzo','Programmazione, scuola, università e lavoro.','--c2'],['fea','Qualità','Schermo, batteria, peso e caratteristiche.','--c3'],['tag','Convenienza','Prezzi, rate e possibilità di sconto.','--c4'],['award','Verdetto finale','Classifica e raccomandazione.','#ff7eb6']];
+S.push(`<div class="w"><h2 class="a">Come scegliere il computer giusto?</h2><div class="ar">${AR.map(a=>`<div class="gl a" style="--k:${a[3].startsWith('--')?`var(${a[3]})`:a[3]}"><div class="ic">${ic(a[0])}</div><h3>${a[1]}</h3><p>${a[2]}</p></div>`).join('')}</div><div class="gl a rw" style="align-items:center;color:var(--tx)">${ic('info')}<span>Confronteremo 9 computer considerando non soltanto il prezzo, ma anche le prestazioni, la compatibilità con i programmi, la possibilità di aggiornamento e l’utilità nel tempo.</span></div></div>`);
+M.forEach((m,k)=>{S.push(`<div class="w"><div class="hd a"><span class="bd">Modello ${k+1} di ${M.length}</span>${m[9]?`<span class="bd g">${ic('chk')}${m[9]}</span>`:''}</div><h2 class="a">${m[0]}</h2><p class="vd a">${m[8]}</p>
+<div class="g"><div style="display:flex;flex-direction:column;gap:14px"><div class="pr a" data-p="${m[1]}">${eur(m[1])}</div><div class="rw a">${ic('bag')}<b>${m[2]}</b></div><div class="rw a">${ic('card')}<span>${m[3]}</span></div>${m[2]==='MediaWorld'?`<p class="club a">Con MediaWorld Club puoi avere uno sconto di 50/100 €: il prezzo diventerebbe <b>${eur(m[1]-50)}</b> con 50 € di sconto o <b>${eur(m[1]-100)}</b> con 100 € di sconto.</p>`:''}${m[4]?`<div class="us a"><b>${U}</b>Da verificare in negozio: non è garantito e dipende dalla promozione, dall’idoneità del dispositivo e dalla valutazione di Unieuro.</div>`:''}</div>
+<div style="display:flex;flex-direction:column;gap:14px"><div class="gl sp a">${m[5].map((v,i)=>`<div>${ic(LI[i]||'oth')}<span>${L[i]||['Connettività','Dotazione'][i-7]}</span><b>${v}</b></div>`).join('')}</div>
+<div class="pc"><div class="gl pro a"><h3>${ic('ok')}Punti di forza</h3><ul>${m[6].map(t=>`<li>${t}</li>`).join('')}</ul></div><div class="gl con a"><h3>${ic('warn')}Punti deboli</h3><ul>${m[7].map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div></div></div>`)});
+const y=t=>`<span class="y" data-s="y">✓ ${t}</span>`,n=t=>`<span class="n">! ${t}</span>`,z=t=>`<span>${t}</span>`;
+const CR=[['Prezzo iniziale',z('729 €'),y('549,90 €'),z('699,90 €')],['Processore',y('Ryzen 5 150, 6 core e 12 thread'),y('Core 5 120U, 10 core e 12 thread'),n('Snapdragon X, 8 core, ARM')],['RAM ed espandibilità',y('16 GB DDR5, fino a 24 GB'),n('16 GB DDR4, espandibilità limitata'),n('16 GB LPDDR5x, saldata')],['Archiviazione',y('512 GB NVMe PCIe 4.0'),z('512 GB NVMe'),n('512 GB eUFS (da verificare)')],['Schermo',y('16 pollici, 1920 × 1200'),z('15,6 pollici, Full HD'),z('15,6 pollici, Full HD')],['Batteria',n('42 Wh'),n('Circa 41 Wh'),y('61,2 Wh')],['Peso',n('Circa 1,88 kg'),z('Circa 1,59 kg'),y('Circa 1,5 kg')],['Compatibilità software',y('Alta (x86-64)'),y('Alta (x86-64)'),n('Da verificare (ARM)')],['Negozio',z('MediaWorld'),z('Unieuro'),z('Unieuro')],['Pagamento',z('10 rate da 72,90 €'),z('Unica soluzione, senza rate'),n('Unica soluzione, non a rate')],['Sconto sull’usato',z('—'),n('Da verificare, non garantito'),n('Da verificare, non garantito')]];
+const MN=[['ASUS Vivobook 16','--c2'],['HP 15-FD1009NLX','--c3'],['Galaxy Book4 Edge','--c1']];
+const cell=(h,i)=>h.replace('<span','<span data-n="'+MN[i][0]+'" style="--m:var('+MN[i][1]+')"');
+S.push(`<div class="w"><h2 class="a">I tre modelli più interessanti</h2><div class="gl cm a"><div class="r h"><b></b>${MN.map(m=>`<span style="--m:var(${m[1]})">${m[0]}</span>`).join('')}</div>${CR.map(r=>`<div class="r"><b>${r[0]}</b>${r.slice(1).map((c,i)=>cell(c,i)).join('')}</div>`).join('')}</div><div class="tg">${[['Programmazione e utilizzo nel tempo','ASUS Vivobook 16','--c2'],['Risparmio','HP 15-FD1009NLX','--c3'],['Autonomia e mobilità','Galaxy Book4 Edge','--c1']].map(t=>`<div class="gl a" style="--k:var(${t[2]})"><small>Migliore per ${t[0].toLowerCase()}</small><h3>${t[1]}</h3></div>`).join('')}</div></div>`);
+const RK=[['ASUS Vivobook 16 M1605NAQ-MB229W',729,'Miglior equilibrio tra prestazioni, schermo, compatibilità e RAM espandibile.'],['HP 15-FD1009NLX',549.9,'Ottimo rapporto qualità-prezzo, potenzialmente ancora migliore con uno sconto Unieuro.'],['Samsung Galaxy Book4 Edge',699.9,'Ottima autonomia e portabilità, ma attenzione alla compatibilità ARM.'],['ASUS Vivobook S14 S3407QA-KP014W',749,'Ottimo schermo e batteria, ma architettura ARM.'],['Lenovo IdeaPad Slim 3 83N30091IX',699,'Leggero e moderno, ma SSD da soli 256 GB, RAM non espandibile e architettura ARM.'],['HP 250 G10 9Y6X7AT',639.9,'Valido, ma senza vantaggi sufficienti per superare i primi quattro.'],['HP 15-fc1009nlx',579.9,'Economico, ma meno flessibile nel tempo; uno sconto potrebbe renderlo più competitivo.'],['ASUS Vivobook 15 F1504MA-BQ783W',699,'Discreto, ma meno competitivo rispetto alle alternative.'],['HP 15-FD1008NLX',799,'Prezzo elevato rispetto alle caratteristiche disponibili.']];
+const PD=[[1,'HP 15-FD1009NLX','549,90 €',68,'--c1'],[0,'ASUS Vivobook 16','729 €',100,'--c2'],[2,'Galaxy Book4 Edge','699,90 €',48,'--c3']];
+S.push(`<div class="w"><h2 class="a">Qual è il computer che conviene di più?</h2><div class="pd a">${PD.map((p,i)=>`<div style="--i:${i}"><b>${p[1]}</b><em>${p[2]}</em><span class="bar" style="height:${p[3]}%;--k:var(${p[4]})">${p[0]+1}</span></div>`).join('')}</div><div class="rk">${RK.map((r,i)=>`<div class="gl a"><i class="${i<3?'t':''}">${i+1}</i><div><b>${r[0]}, ${eur(r[1])}</b><p>${r[2]}</p></div></div>`).join('')}</div><p class="nt a">Valutazione ragionata basata su caratteristiche e prezzi comunicati, senza sconti non confermati. Non deriva da test indipendenti.</p></div>`);
+const WY=['Processore adeguato alla programmazione e al multitasking','Architettura x86-64, in genere compatibile con i tradizionali strumenti di sviluppo','16 GB di RAM, espandibile fino a 24 GB secondo le specifiche','Schermo grande e formato 16:10, comodo per leggere il codice','SSD veloce da 512 GB','Adatto a scuola, università e a molti utilizzi lavorativi','729 €, in 10 rate da 72,90 € secondo le condizioni comunicate'];
+S.push(`<div class="w"><h2 class="a">La scelta consigliata</h2><div class="wy"><div class="gl ck a">${WY.map((t,i)=>`<div class="pop" style="--i:${i}">${ic('ok')}<span>${t}</span></div>`).join('')}</div><div class="gl big a"><span class="bd g">${ic('chk')}Consigliato</span><h3>ASUS Vivobook 16</h3><div class="pr" data-p="729">729 €</div><p class="vd">10 rate da 72,90 €</p></div></div><p class="qt a">“Non è il più economico né il più leggero, ma offre il compromesso più convincente tra prestazioni, compatibilità e possibilità di utilizzo nel tempo.”</p></div>`);
+const OP=[['Opzione A','ASUS Vivobook 16','Consigliato per prestazioni, programmazione, espandibilità e utilizzo a lungo termine.','--c2'],['Opzione B','HP 15-FD1009NLX','Consigliato se il budget è prioritario e si desidera un computer valido spendendo meno. Verificare lo sconto Unieuro per il dispositivo usato.','--c3'],['Opzione C','Samsung Galaxy Book4 Edge','Consigliato se autonomia e portabilità sono priorità, dopo aver verificato la compatibilità dei programmi. Verificare anche l’eventuale sconto Unieuro per il dispositivo usato.','--c1']];
+const CK=['Confermare il prezzo effettivo','Verificare le condizioni delle rate','Chiedere a Unieuro se il dispositivo usato è idoneo al ritiro e quale sconto viene riconosciuto','Verificare la compatibilità dei programmi di informatica','Confermare RAM, SSD e configurazione esatta','Controllare l’alimentatore e le condizioni della garanzia'];
+S.push(`<div class="w"><h2 class="a">La decisione finale</h2><div class="op">${OP.map(o=>`<div class="gl a" style="--k:var(${o[3]})"><small style="color:var(--mu)">${o[0]}</small><h3>${o[1]}</h3><p>${o[2]}</p></div>`).join('')}</div><div class="gl a"><h3 style="font-size:20px;margin-bottom:14px">Checklist prima dell’acquisto</h3><div class="cl ck">${CK.map((t,i)=>`<div class="pop" style="--i:${i}">${ic('ok')}<span>${t}</span></div>`).join('')}</div></div><p class="qt a">“La scelta migliore è quella che unisce prestazioni adeguate, compatibilità, durata nel tempo e un prezzo realmente conveniente.”</p></div>`);
+const opt=s=>M.map((m,i)=>`<option value="${i}"${i===s?' selected':''}>${m[0]}</option>`).join('');
+S.push(`<div class="w"><h2 class="a">Confronta due computer</h2><p class="vd a">Scegli due modelli e premi Confronta per vederli fianco a fianco.</p><div class="pk a"><label><span style="color:var(--c2)">Computer A</span><select id="sa" aria-label="Computer A">${opt(4)}</select></label><label><span style="color:var(--c1)">Computer B</span><select id="sb" aria-label="Computer B">${opt(0)}</select></label></div><button class="bt a" id="cb">${ic('zap')} Confronta</button><div id="cr" aria-live="polite"></div><button class="bt gh a" id="hm">${ic('rot')} Torna all’inizio</button></div>`);
+function initCmp(){const sa=document.getElementById('sa'),sb=document.getElementById('sb'),cr=document.getElementById('cr');
+ document.getElementById('hm').onclick=()=>go(0);
+ document.getElementById('cb').onclick=()=>{const a=M[sa.value],b=M[sb.value];
+  if(sa.value===sb.value){cr.innerHTML='<div class="gl cmx">Scegli due computer diversi per confrontarli.</div>';return}
+  const num=(s,r)=>{const x=s.match(r);return x?parseFloat(x[1].replace(',','.')):null};
+  const bw=(x,y,m)=>x==null||y==null||x===y?[0,0]:(m?x<y:x>y)?[1,0]:[0,1];
+  const row=(l,va,vb,f=[0,0])=>`<div class="r"><b>${l}</b><span data-n="A" style="--m:var(--c2)" class="${f[0]?'y':''}">${f[0]?'✓ ':''}${va}</span><span data-n="B" style="--m:var(--c1)" class="${f[1]?'y':''}">${f[1]?'✓ ':''}${vb}</span></div>`;
+  const wh=m=>num(m[5][4],/([\d,.]+) Wh/),kg=m=>num(m[5][5],/([\d,.]+) kg/);
+  let rows=row('Prezzo',eur(a[1]),eur(b[1]),bw(a[1],b[1],1))+row('Negozio',a[2],b[2])+row('Pagamento',a[3],b[3])+L.map((l,i)=>row(l,a[5][i],b[5][i],i==4?bw(wh(a),wh(b),0):i==5?bw(kg(a),kg(b),1):[0,0])).join('');
+  if(a[4]||b[4])rows+=row('Sconto sull’usato',a[4]?'Possibile, da verificare (non garantito)':'—',b[4]?'Possibile, da verificare (non garantito)':'—');
+  const col=(m,i)=>`<div class="gl"><h3 style="color:var(${i?'--c1':'--c2'});font-size:18px;margin-bottom:12px">${m[0]}</h3><div class="pc" style="grid-template-columns:1fr"><div class="pro"><h3>${ic('ok')}Punti di forza</h3><ul>${m[6].map(t=>`<li>${t}</li>`).join('')}</ul></div><div class="con"><h3>${ic('warn')}Punti deboli</h3><ul>${m[7].map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+  cr.innerHTML=`<div class="cx"><div class="hdr"><div style="--k:var(--c2)"><small>Computer A</small><h3>${a[0]}</h3><div class="pr2">${eur(a[1])}</div></div><div style="--k:var(--c1)"><small>Computer B</small><h3>${b[0]}</h3><div class="pr2">${eur(b[1])}</div></div></div><div class="gl cm cc">${rows}</div><div class="pcs">${col(a,0)}${col(b,1)}</div></div>`;
+  cr.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'})}}
+const st=document.getElementById('st'),pv=document.getElementById('pv'),nx=document.getElementById('nx'),ct=document.getElementById('ct'),pg=document.getElementById('pg');
+pv.innerHTML=ic('l');nx.innerHTML=ic('r');
+st.innerHTML=S.map((h,i)=>`<section class="slide${i==0?' cv':''}" aria-label="Slide ${i+1} di ${S.length}">${h}</section>`).join('');
+const E=[...st.children];E.forEach(e=>e.querySelectorAll('.a').forEach((a,i)=>a.style.setProperty('--i',i)));
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;initCmp();
+function cu(el){const v=+el.dataset.p;if(rm)return;const s=performance.now();(function f(t){const k=Math.min(1,(t-s)/1000),e=1-Math.pow(1-k,3);el.textContent=eur(Math.round(v*e*100)/100);if(k<1)requestAnimationFrame(f);else el.textContent=eur(v)})(s)}
+let cur=-1;
+function go(i){i=Math.max(0,Math.min(E.length-1,i));if(i===cur)return;st.style.setProperty('--d',i>cur?1:-1);const o=E[cur];if(o){o.classList.remove('on');o.classList.add('out');setTimeout(()=>o.classList.remove('out'),700)}
+ cur=i;const e=E[i];e.classList.remove('out');e.scrollTop=0;void e.offsetWidth;e.classList.add('on');e.querySelectorAll('[data-p]').forEach(cu);
+ pv.classList.toggle('h',i===0);nx.classList.toggle('h',i===E.length-1);ct.textContent=(i+1)+' di '+E.length;pg.style.transform='scaleX('+(i+1)/E.length+')';
+ try{history.replaceState(null,'','#s'+(i+1))}catch(x){}}
+pv.onclick=()=>go(cur-1);nx.onclick=()=>go(cur+1);
+addEventListener('keydown',k=>{if(k.key==='ArrowRight'||k.key==='PageDown')go(cur+1);if(k.key==='ArrowLeft'||k.key==='PageUp')go(cur-1)});
+let tx=0,ty=0;st.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+st.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.4)go(cur+(dx<0?1:-1))},{passive:true});
+const h=parseInt((location.hash.match(/s(\d+)/)||[])[1]);go(h>0&&h<=E.length?h-1:0);
+</script>
+</body>
+</html>
